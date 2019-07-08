@@ -24,7 +24,7 @@ import com.github.shyiko.mysql.binlog.event.WriteRowsEventData;
 import ngp.mysql.elasticsearch.connector.AppParams;
 import ngp.mysql.elasticsearch.connector.connection.MysqlConnection;
 
-/*
+/* Class
  *
  * @author falcon
  */
