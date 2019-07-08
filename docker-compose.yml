@@ -1,0 +1,25 @@
+version: '2'
+services:
+
+  #Elasticsearch connector Service
+  elasticsearch-connector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: elasticsearch/connector
+    container_name: elasticsearch-connector
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: elasticsearch-connector
+      SERVICE_TAGS: dev
+    working_dir: /usr/src/elasticsearch
+    entrypoint: /docker-entrypoint.sh
+#     networks:
+#       - app-network
+#
+# #Docker Networks
+# networks:
+#   app-network:
+#     external:
+#       name: pbpbusinessdatabanklaravel_app-network

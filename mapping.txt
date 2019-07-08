@@ -1,0 +1,122 @@
+{
+  "settings": {
+    "number_of_shards":   10, 
+    "number_of_replicas": 0,
+    "analysis": {
+      "analyzer": {
+        "autocomplete": {
+          "tokenizer": "autocomplete",
+          "char_filter": [
+            "my_char_filter"
+          ],
+          "filter": [
+            "lowercase"
+          ]
+        },
+        "autocomplete_search": {
+          "tokenizer": "whitespace",
+          "char_filter": [
+            "my_char_filter"
+          ],
+          "filter": [
+            "lowercase",
+            "worddelimiter"
+          ]
+        },
+        "starstwith_search": {
+          "tokenizer": "keyword",
+          "filter": "lowercase"
+        },
+        "apostrophe_search": {
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase"
+          ],
+          "char_filter": [
+            "my_char_filter"
+          ]
+        }
+      },
+      "char_filter": {
+        "my_char_filter": {
+          "type": "mapping",
+          "mappings": [
+            "ö => o",
+            "ð => d",
+            "ó => o",
+            "á => a",
+            "é => e",
+            "þ => p",
+            "ú => u",
+            "ý => y"
+          ]
+        },
+        "alphabets_char_filter": {
+          "type": "pattern_replace",
+          "pattern": "[^a-zA-Z]",
+          "replacement": ""
+        }
+      },
+      "tokenizer": {
+        "autocomplete": {
+          "type": "edge_ngram",
+          "min_gram": 1,
+          "max_gram": 100,
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        }
+      },
+      "filter": {
+        "worddelimiter": {
+          "type": "word_delimiter",
+          "catenate_words": true,
+          "preserve_original": true,
+          "stem_english_possessive": false
+        }
+      }
+    }
+  },
+  "mappings": {
+    "_doc": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "pbn": {
+          "type": "keyword"
+        },
+        "business_name": {
+          "type": "text",
+          "analyzer": "autocomplete_search",
+          "search_analyzer": "autocomplete_search",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            },
+            "spot": {
+              "type": "text",
+              "analyzer": "starstwith_search",
+              "search_analyzer": "starstwith_search"
+            },
+            "numerictext": {
+              "type": "text",
+              "analyzer": "apostrophe_search"
+            },
+            "apostrophefield": {
+              "type": "text",
+              "analyzer": "apostrophe_search"
+            }
+          }
+        },
+        "status": {
+          "type": "keyword"
+        },
+        "business_setup": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}
