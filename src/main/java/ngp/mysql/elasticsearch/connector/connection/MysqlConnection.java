@@ -4,6 +4,11 @@ import java.io.IOException;
 
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 
+/**
+* Mysql Connection
+*
+* @author Falcon
+*/
 public enum MysqlConnection {
 	INSTANCE;
 	
