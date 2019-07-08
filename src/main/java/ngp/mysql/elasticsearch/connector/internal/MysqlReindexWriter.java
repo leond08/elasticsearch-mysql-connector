@@ -20,8 +20,8 @@ import ngp.mysql.elasticsearch.connector.AppParams;
 
 public class MysqlReindexWriter {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(MysqlReindexWriter.class);
-	private Connection connect = null;
+    private static final Logger LOGGER = LoggerFactory.getLogger(MysqlReindexWriter.class);
+    private Connection connect = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
     private String mysqlHost;
