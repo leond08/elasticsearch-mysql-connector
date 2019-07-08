@@ -63,7 +63,7 @@ public class MysqlReindexWriter {
                     .executeQuery("select id,pbn,business_name,business_setup,status from " + tableName);
             
             while(resultSet.next()) {
-            	
+            	//Sample index
             	IndexRequest indexRequest = new IndexRequest(indexName, "_doc", resultSet.getString("id"))
                 		.source(getMapping(resultSet.getString("id"),resultSet.getString("pbn"),
                 				resultSet.getString("business_name"), resultSet.getString("business_setup"),
@@ -88,7 +88,7 @@ public class MysqlReindexWriter {
 			String businessName, String businessSetup, String status ) {
 		
         Map<String, Object> map = new HashMap<>();
-        
+        // Sample mapping
         map.put("id", checkNull(id));
         map.put("pbn", checkNull(pbn));
         map.put("business_name", checkNull(businessName));
