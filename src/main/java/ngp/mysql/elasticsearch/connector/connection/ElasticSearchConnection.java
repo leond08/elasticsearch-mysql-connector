@@ -5,7 +5,11 @@ import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 
-
+/**
+* Elasticsearch Connection
+*
+* @author Falcon
+*/
 public enum ElasticSearchConnection {
 	INSTANCE;
 	
