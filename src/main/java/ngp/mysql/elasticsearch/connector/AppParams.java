@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 /* Parameters 
  * 
- * 
+ * @author Falcon
  */
 public class AppParams {
 	
